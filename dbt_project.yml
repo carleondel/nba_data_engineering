@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_project'
+name: 'proyecto_final'
 version: '1.0.0'
 config-version: 2
 
@@ -36,7 +36,22 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  my_new_project:
-    # Applies to all files under models/example/
-    example:
+  proyecto_final:
+    staging:
+      +materialized: view
+      +database: ALUMNO28_NBA_SILVER_DB
+      proyecto_final:
+        +schema: dbt
+
+    marts:
       +materialized: table
+      +database: ALUMNO28_NBA_GOLD_DB
+      core:
+        +schema: dbt
+seeds:
+  +schema: seed_data
+  +database: ALUMNO28_NBA_BRONZE_DB
+snapshots:
+  +transient: false
+  +target_database: ALUMNO28_NBA_SILVER_DB
+  +target_schema: snapshots

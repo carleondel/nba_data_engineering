@@ -1,0 +1,131 @@
+version: 2
+
+sources:
+  - name: _fivetran_nba_games_data # name of the source
+    schema: FIVETRAN_NBA_GAMES_DATA # this is the schema our raw data lives in
+    database: ALUMNO28_NBA_BRONZE_DB # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: { count: 24, period: hour }
+      error_after: { count: 48, period: hour }
+
+    tables:
+      - name: games
+        loaded_at_field: _fivetran_synced #te indica la frescura del dato
+        columns:
+          - name: _fivetran_id
+          - name: team_id_home
+          - name: team_id_away
+          - name: ft_pct_away
+          - name: FT_PCT_HOME
+          - name: REB_HOME
+          - name: FG_PCT_HOME
+          - name: FG3_PCT_HOME
+          - name: FG_PCT_AWAY
+          - name: AST_HOME
+          - name: GAME_ID
+          - name: FG3_PCT_AWAY
+          - name: AST_AWAY
+          - name: GAME_STATUS_TEXT
+          - name: REB_AWAY
+          - name: SEASON
+          - name: PTS_AWAY
+          - name: PTS_HOME
+          - name: GAME_DATE_EST
+          - name: HOME_TEAM_ID
+          - name: HOME_TEAM_WINS
+          - name: VISITOR_TEAM_ID
+          - name: _FIVETRAN_DELETED
+          - name: _FIVETRAN_SYNCED
+
+      - name: games_details
+        loaded_at_field: _fivetran_synced #te indica la frescura del dato
+        columns:
+          - name: _FIVETRAN_ID
+          - name: TEAM_ID
+          - name: FTM
+          - name: FGM
+          - name: MIN
+          - name: FG_PCT
+          - name: BLK
+          - name: PLAYER_ID
+          - name: START_POSITION
+          - name: DREB
+          - name: AST
+          - name: PTS
+          - name: REB
+          - name: NICKNAME
+          - name: OREB
+          - name: PF
+          - name: STL
+          - name: FG3A
+          - name: FTA
+          - name: COMMENT
+          - name: PLAYER_NAME
+          - name: TOS
+          - name: TEAM_ABBREVIATION
+          - name: FGA
+          - name: TEAM_CITY
+          - name: FG3M
+          - name: GAME_ID
+          - name: PLUS_MINUS
+          - name: FG3_PCT
+          - name: FT_PCT
+          - name: _FIVETRAN_DELETED
+          - name: _FIVETRAN_SYNCED
+      - name: players
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: _FIVETRAN_ID
+          - name: TEAM_ID
+          - name: SEASON
+          - name: PLAYER_NAME
+          - name: PLAYER_ID
+          - name: _FIVETRAN_DELETED
+          - name: _FIVETRAN_SYNCED
+
+      - name: ranking
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: _FIVETRAN_ID
+          - name: L
+          - name: TEAM_ID
+          - name: ROAD_RECORD
+          - name: RETURNTOPLAY
+          - name: STANDINGSDATE
+          - name: HOME_RECORD
+          - name: W
+          - name: SEASON_ID
+          - name: TEAM
+          - name: G
+          - name: CONFERENCE
+          - name: W_PCT
+          - name: LEAGUE_ID
+          - name: _FIVETRAN_DELETED
+          - name: _FIVETRAN_SYNCED
+
+      - name: teams
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: _FIVETRAN_ID
+          - name: MAX_YEAR
+          - name: GENERALMANAGER
+          - name: OWNER
+          - name: CITY
+          - name: ARENACAPACITY
+          - name: YEARFOUNDED
+          - name: ARENA
+          - name: TEAM_ID
+          - name: LEAGUE_ID
+          - name: MIN_YEAR
+          - name: HEADCOACH
+          - name: NICKNAME
+          - name: DLEAGUEAFFILIATION
+          - name: ABBREVIATION
+          - name: _FIVETRAN_DELETED
+          - name: _FIVETRAN_SYNCED
