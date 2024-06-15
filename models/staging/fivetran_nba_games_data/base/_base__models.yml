@@ -1,0 +1,56 @@
+version: 2
+
+models:
+
+  - name: base_fivetran_nba_games_data__games_details
+    description: >
+      This model transforms raw NBA games details data.
+    columns:
+      - name: surrogate_key
+        description: Surrogate key generated for the record.
+        tests:
+          - unique
+          - not_null
+      - name: team_id
+        description: ID of the team.
+      - name: ftm
+        description: Field goals made.
+      - name: fgm
+        description: Field goals attempted.
+      - name: min
+        description: Minutes played.
+      - name: fg_pct
+        description: Field goal percentage.
+      # Add more columns as per your actual schema
+
+    # Source and schema
+    +source_table: ALUMNO28_NBA_SILVER_DB.DBT.BASE_FIVETRAN_NBA_GAMES_DATA__GAMES_DETAILS
+    +schema: dbt
+    +database: ALUMNO28_NBA_SILVER_DB
+    +materialized: view
+
+  - name: base_fivetran_nba_games_data__games
+    description: >
+      This model transforms raw NBA games data.
+    columns:
+      - name: surrogate_key
+        description: Surrogate key generated for the record.
+        tests:
+          - unique
+          - not_null
+      - name: game_id
+        description: ID of the game.
+      - name: game_date_est
+        description: Date of the game.
+      - name: home_team_id
+        description: ID of the home team.
+      - name: visitor_team_id
+        description: ID of the visitor team.
+      # Add more columns as per your actual schema
+
+    # Source and schema
+    +source_table: ALUMNO28_NBA_SILVER_DB.DBT.BASE_FIVETRAN_NBA_GAMES_DATA__GAMES
+    +schema: dbt
+    +database: ALUMNO28_NBA_SILVER_DB
+    +materialized: view
+
