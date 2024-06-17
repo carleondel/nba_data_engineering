@@ -38,3 +38,5 @@ renamed_casted AS (
     )
 
 SELECT * FROM renamed_casted
+-- we will only work with seasons <= 2019 since we don't have data for teams nor players after that season
+WHERE SEASON <= 2019
