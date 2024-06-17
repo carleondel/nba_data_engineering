@@ -78,6 +78,7 @@ sources:
           - name: FT_PCT
           - name: _FIVETRAN_DELETED
           - name: _FIVETRAN_SYNCED
+          
       - name: players
         loaded_at_field: _fivetran_synced
         columns:

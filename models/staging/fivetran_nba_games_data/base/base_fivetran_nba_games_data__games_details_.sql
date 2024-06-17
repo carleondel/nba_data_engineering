@@ -10,7 +10,7 @@ renamed as (
 
     select
          -- Generating surrogate key
-        {{ dbt_utils.generate_surrogate_key(['TEAM_ID', 'PLAYER_ID', 'GAME_ID']) }} AS surrogate_key,
+        {{ dbt_utils.generate_surrogate_key(['PLAYER_ID', 'GAME_ID']) }} AS surrogate_key,
         team_id,
         ftm,
         fgm,
