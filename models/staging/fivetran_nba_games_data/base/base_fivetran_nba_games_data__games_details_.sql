@@ -14,7 +14,8 @@ renamed as (
         team_id,
         ftm,
         fgm,
-        min,
+        -- Convert 'min' from MM:SS to decimal minutes
+        ROUND(TRY_TO_NUMBER(SPLIT_PART(min, ':', 1)) + TRY_TO_NUMBER(SPLIT_PART(min, ':', 2)) / 60.0, 2) AS min,
         fg_pct,
         blk,
         player_id,

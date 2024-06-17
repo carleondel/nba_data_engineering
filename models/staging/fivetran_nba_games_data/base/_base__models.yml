@@ -4,30 +4,120 @@ models:
 
   - name: base_fivetran_nba_games_data__games_details
     description: >
-      This model transforms raw NBA games details data.
+      Base models for games details data.
     columns:
       - name: surrogate_key
-        description: Surrogate key generated for the record.
+        data_type: varchar
+        description: Surrogate key generated using game_id, player_id and team_id.
         tests:
           - unique
           - not_null
+          
       - name: team_id
+        data_type: NUMBER
         description: ID of the team.
+        tests:
+          - not_null
+              
       - name: ftm
-        description: Field goals made.
+        data_type: NUMBER
+        description: Free throws made.
+
       - name: fgm
-        description: Field goals attempted.
+        data_type: NUMBER
+        description: Field goals made.
+
       - name: min
+        data_type: varchar
         description: Minutes played.
+
       - name: fg_pct
         description: Field goal percentage.
-      # Add more columns as per your actual schema
+      
+      - name: blk
+        description: "Blocks"
 
-    # Source and schema
-    +source_table: ALUMNO28_NBA_SILVER_DB.DBT.BASE_FIVETRAN_NBA_GAMES_DATA__GAMES_DETAILS
-    +schema: dbt
-    +database: ALUMNO28_NBA_SILVER_DB
-    +materialized: view
+      - name: player_id
+        description: "Player ID"
+        tests:
+          - not_null
+
+      - name: start_position
+        description: "Starting position of the player"
+
+      - name: dreb
+        description: "Defensive rebounds"
+      - name: ast
+        description: "Assists"
+      - name: pts
+        description: "Points"
+      - name: reb
+        description: "Total rebounds"
+      - name: nickname
+        description: "Player's nickname"
+      - name: oreb
+        description: "Offensive rebounds"
+      - name: pf
+        description: "Personal fouls"
+      - name: stl
+        description: "Steals"
+      - name: fg3a
+        description: "Three-point attempts"
+      - name: fta
+        description: "Free throw attempts"
+
+      - name: comment
+        description: "Comments"
+
+      - name: player_name
+        description: "Player's full name"
+
+      - name: tos
+        description: "Turnovers"
+
+      - name: team_abbreviation
+        description: "Team abbreviation"
+
+      - name: fga
+        description: "Field goals attempted"
+
+      - name: team_city
+        description: "Team city"
+
+      - name: fg3m
+        description: "Three-point field goals made"
+
+      - name: game_id
+        description: "Game ID"
+        tests:
+          - not_null
+
+      - name: plus_minus
+        description: "Plus-minus"
+
+      - name: fg3_pct
+        description: "Three-point percentage"
+        tests:
+          - not_null
+
+      - name: ft_pct
+        description: "Free throw percentage"
+        tests:
+          - not_null
+
+      - name: _fivetran_deleted
+        description: "Indicates if the record was deleted"
+      - name: _fivetran_synced
+        description: "Timestamp of when the record was last synced"
+        tests:
+          - not_null
+      - name: row_num
+        description: "Row number within the partition"
+
+
+
+
+
 
   - name: base_fivetran_nba_games_data__games
     description: >
