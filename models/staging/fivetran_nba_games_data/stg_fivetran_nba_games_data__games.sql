@@ -4,10 +4,11 @@ WITH base_games AS (
     FROM {{ ref('base_fivetran_nba_games_data__games_') }}
     ),
 
-possible_transformation AS (
+transformation AS (
     SELECT
-          *
+          *,
+          {{ categorize_game_type('game_date_est') }} AS game_type
     FROM base_games
     )
 
-SELECT * FROM possible_transformation
+SELECT * FROM transformation

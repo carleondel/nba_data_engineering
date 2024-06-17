@@ -13,7 +13,8 @@ WITH base_games AS (
 filtered_games_details AS (
     SELECT
         gd.*,
-        bg.GAME_DATE
+        bg.GAME_DATE,
+        {{ categorize_game_type('GAME_DATE') }} AS game_type
     FROM {{ ref('base_fivetran_nba_games_data__games_details_') }} gd
     INNER JOIN base_games bg
     ON gd.game_id = bg.game_id
