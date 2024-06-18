@@ -4,7 +4,7 @@
 WITH base_games AS (
     SELECT
         game_id,
-        GAME_DATE_EST AS GAME_DATE
+        GAME_DATE
     FROM {{ ref('base_fivetran_nba_games_data__games_') }}
     -- Ya los he filtrado en base__games
     --WHERE season BETWEEN 2009 AND 2019 

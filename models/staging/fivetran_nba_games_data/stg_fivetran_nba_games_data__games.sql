@@ -7,7 +7,7 @@ WITH base_games AS (
 transformation AS (
     SELECT
           *,
-          {{ categorize_game_type('game_date_est') }} AS game_type
+          {{ categorize_game_type('game_date') }} AS game_type
     FROM base_games
     )
 
