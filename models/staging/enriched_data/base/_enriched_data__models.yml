@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: base_enriched_data__players_static_info_
+    description: "Enriched players static info data"
+    columns:
+      - name: player_name
+        description: "The name of the player"
+        tests:
+          - unique
