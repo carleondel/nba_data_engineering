@@ -6,10 +6,12 @@ source as (
 
 ),
 
-renamed as (
+transformed as (
 
     select
-        _fivetran_id,
+         -- Generating surrogate key
+        {{ dbt_utils.generate_surrogate_key(['player_id', 'team_ID', 'season']) }} AS player_team_season_id,
+        --_fivetran_id,
         team_id,
         season,
         player_name,
@@ -21,4 +23,4 @@ renamed as (
 
 )
 
-select * from renamed
+select * from transformed

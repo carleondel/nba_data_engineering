@@ -10,7 +10,7 @@ renamed as (
 
     select
         --_fivetran_id,
-        max_year,
+        --max_year,
         generalmanager,
         owner,
         city,
@@ -19,7 +19,7 @@ renamed as (
         arena,
         team_id,
         --league_id,
-        min_year,
+        --min_year,
         headcoach,
         nickname,
         dleagueaffiliation,
