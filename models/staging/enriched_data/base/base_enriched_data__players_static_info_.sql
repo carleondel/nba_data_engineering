@@ -10,8 +10,9 @@ WITH src_players_info AS (
     ),
 
 renamed_casted AS (
-    SELECT
-          person_id,
+    SELECT 
+          {{ dbt_utils.generate_surrogate_key(['display_first_last']) }} AS player_id,
+          --person_id,
           --first_name,
           --last_name,
           display_first_last AS player_name,
