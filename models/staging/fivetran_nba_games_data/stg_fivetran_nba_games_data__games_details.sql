@@ -1,12 +1,13 @@
 -- Aquí estamos usando los dos modelos de base para filtrar games_details
 -- y solo quedarnos con datos de season ENTRE 2009 Y 2019
--- TAMBIEN COGEMOS LA FECHA
+-- TAMBIEN AÑADIMOS LA FECHA DESDE GAMES
 WITH base_games AS (
     SELECT
         game_id,
         GAME_DATE
     FROM {{ ref('base_fivetran_nba_games_data__games_') }}
-    -- Ya los he filtrado en base__games
+    -- Ya los he filtrado en base__games, 
+    --ASI QUE AL HACER EL INNER JOIN ES COMO SI FILTRAMOS POR SEASONS 2009-2019
     --WHERE season BETWEEN 2009 AND 2019 
 ),
 

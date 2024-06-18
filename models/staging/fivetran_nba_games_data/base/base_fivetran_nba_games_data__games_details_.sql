@@ -10,7 +10,7 @@ renamed as (
 
     select
          -- Generating surrogate key
-        {{ dbt_utils.generate_surrogate_key(['PLAYER_ID', 'GAME_ID']) }} AS surrogate_key,
+        {{ dbt_utils.generate_surrogate_key(['PLAYER_ID', 'GAME_ID']) }} AS id,
         team_id,
         ftm,
         fgm,
@@ -24,7 +24,7 @@ renamed as (
         ast,
         pts,
         reb,
-        nickname,
+        --nickname,
         oreb,
         pf,
         stl,
@@ -35,7 +35,7 @@ renamed as (
         tos,
         team_abbreviation,
         fga,
-        team_city,
+        --team_city,
         fg3m,
         game_id,
         plus_minus,
@@ -44,7 +44,7 @@ renamed as (
         _fivetran_deleted,
         _fivetran_synced,
 
-        ROW_NUMBER() OVER (PARTITION BY surrogate_key ORDER BY surrogate_key) AS row_num
+        ROW_NUMBER() OVER (PARTITION BY id ORDER BY id) AS row_num
 
     from src_games_details
 
