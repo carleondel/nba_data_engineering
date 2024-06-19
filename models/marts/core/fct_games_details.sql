@@ -41,7 +41,8 @@ filtered as (
         --team_city,       
         --_fivetran_deleted,
         --_fivetran_synced
-
+        player_efficiency_rating
+        
     from stg_games_details
 
 )
