@@ -21,7 +21,7 @@ renamed as (
         --league_id,
         --min_year,
         headcoach,
-        nickname,
+        nickname AS team_name,
         dleagueaffiliation,
         abbreviation,
         _fivetran_deleted,

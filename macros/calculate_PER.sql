@@ -1,7 +1,7 @@
 {% macro calculate_per(fgm, steals, three_ptm, ftm, blocks, offensive_reb, assists, defensive_reb, fouls, fga, fta, turnovers, minutes_played) %}
    
    CASE
-        WHEN {{ minutes_played }} > 10 THEN (
+        WHEN {{ minutes_played }} > 15 THEN (
 
             (
                 ({{ fgm }} * 85.910) +
