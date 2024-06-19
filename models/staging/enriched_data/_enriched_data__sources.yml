@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+
+  - name: other_sources # name of the source 
+    schema: other_sources # this is the schema our raw data lives in
+    database: ALUMNO28_NBA_BRONZE_DB # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+
+      - name: players_static_info
+        columns:
+          - name: person_id
+          - name: first_name
+          - name: last_name
+          - name: display_first_last
+          - name: display_fi_last
+          - name: birthdate
+          - name: school
+          - name: country
+          - name: last_affiliation
+          - name: height
+          - name: weight
+          - name: season_exp
+          - name: jersey
+          - name: position
+          - name: rosterstatus
+          - name: games_played_current_season_flag
+          - name: team_id
+          - name: team_name
+          - name: team_abbreviation
+          - name: team_code
+          - name: team_city
+          - name: playercode
+          - name: from_year
+          - name: to_year
+          - name: games_played_flag
+          - name: draft_year
+          - name: draft_round
+          - name: draft_number
+          - name: greatest_75_flag
