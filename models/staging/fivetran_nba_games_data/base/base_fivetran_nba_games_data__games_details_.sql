@@ -18,7 +18,10 @@ renamed as (
         ROUND(TRY_TO_NUMBER(SPLIT_PART(min, ':', 1)) + TRY_TO_NUMBER(SPLIT_PART(min, ':', 2)) / 60.0, 2) AS min,
         fg_pct,
         blk,
-        player_id,
+        -- Generating surrogate key. Al crearla a partir del player_name, luego podremos hacer
+        -- joins con los datos de otras fuentes. Si no, tendríamos player_id distintos
+        {{ dbt_utils.generate_surrogate_key(['player_name']) }} AS player_id,
+        --player_id,
         start_position,
         dreb,
         ast,
