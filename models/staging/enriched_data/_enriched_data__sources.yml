@@ -48,3 +48,9 @@ sources:
           - name: draft_round
           - name: draft_number
           - name: greatest_75_flag
+        
+      - name: conference_teams
+        columns:
+          - name: team_id
+          - name: abbreviation
+          - name: conference
