@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: ranking_teams_playoff
+    description: "Este modelo calcula el ranking de equipos por número de victorias en los playoffs entre las temporadas 2009 y 2019."
+    columns:
+      - name: rank
+        description: "Posición del equipo en el ranking."
+      - name: team_name
+        description: "Nombre del equipo."
+      - name: total_wins
+        description: "Número total de victorias del equipo en los playoffs."
+      - name: total_losses
+        description: "Número total de derrotas del equipo en los playoffs."
+      - name: win_percentage
+        description: "Porcentaje de victorias del equipo en los playoffs."
+
+  - name: ranking_teams_regular_season
+    description: "Este modelo calcula el ranking de equipos por porcentaje de victorias en la temporada regular entre las temporadas 2009 y 2019."
+    columns:
+      - name: rank
+        description: "Posición del equipo en el ranking."
+      - name: team_name
+        description: "Nombre del equipo."
+      - name: total_wins
+        description: "Número total de victorias del equipo en la temporada regular."
+      - name: total_losses
+        description: "Número total de derrotas del equipo en la temporada regular."
+      - name: win_percentage
+        description: "Porcentaje de victorias del equipo en la temporada regular."
