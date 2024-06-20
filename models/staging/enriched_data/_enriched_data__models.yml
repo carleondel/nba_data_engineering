@@ -52,3 +52,21 @@ models:
         tests:
           - accepted_values:
               values: ["TRUE", "FALSE"]
+
+  - name: stg_enriched_data__conference_teams
+    description: "Staging model for enriched conference teams data."
+    columns:
+      - name: team_id
+        description: "Identifier for the team."
+        tests:
+          - not_null
+          - unique
+
+      - name: abbreviation
+        description: "Abbreviation of the team."
+
+      - name: conference
+        description: "Conference to which the team belongs."
+
+      - name: date_load
+        description: "Timestamp indicating when the record was loaded."

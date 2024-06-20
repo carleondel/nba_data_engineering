@@ -1,0 +1,176 @@
+version: 2
+
+models:
+  - name: stg_fivetran_nba_games_data__games
+    description: "Hemos añadido el tipo de partido (Regular Season, Play-in, Playoff o Preseason) y quitado dos columnas"
+    columns:
+      - name: game_id
+        description: "ID único del juego."
+        tests:
+          - unique
+          - not_null
+      - name: game_date
+        description: "Fecha del juego."
+        tests:
+          - not_null
+      - name: season
+        description: "Temporada en la que se jugó el partido."
+        tests:
+          - not_null
+      - name: team_id_home
+        description: "ID del equipo local."
+        tests:
+          - not_null
+      - name: team_id_away
+        description: "ID del equipo visitante."
+        tests:
+          - not_null
+      - name: ft_pct_home
+        description: "Porcentaje de tiros libres del equipo local."
+      - name: ft_pct_away
+        description: "Porcentaje de tiros libres del equipo visitante."
+      - name: fg_pct_home
+        description: "Porcentaje de tiros de campo del equipo local."
+      - name: fg_pct_away
+        description: "Porcentaje de tiros de campo del equipo visitante."
+      - name: fg3_pct_home
+        description: "Porcentaje de tiros de tres puntos del equipo local."
+      - name: fg3_pct_away
+        description: "Porcentaje de tiros de tres puntos del equipo visitante."
+      - name: ast_home
+        description: "Asistencias del equipo local."
+      - name: ast_away
+        description: "Asistencias del equipo visitante."
+      - name: reb_home
+        description: "Rebotes del equipo local."
+      - name: reb_away
+        description: "Rebotes del equipo visitante."
+      - name: pts_home
+        description: "Puntos del equipo local."
+      - name: pts_away
+        description: "Puntos del equipo visitante."
+      - name: home_team_wins
+        description: "Indicador si el equipo local ganó el partido."
+      - name: game_type
+        description: "Tipo de juego (e.g., Regular Season, Playoffs, etc)."
+
+  - name: stg_fivetran_nba_games_data__games_details
+    description: "Este modelo contiene detalles de los juegos de la NBA, incluyendo estadísticas de jugadores y tipos de juegos."
+    columns:
+      - name: game_id
+        description: "ID único del juego."
+        tests:
+          - not_null
+      - name: player_efficiency_rating
+        description: "Calificación de eficiencia del jugador."
+      - name: game_date
+        description: "Fecha del juego."
+        tests:
+          - not_null
+      - name: game_type
+        description: "Tipo de juego (e.g., Regular, Playoffs)."
+      - name: team_id
+        description: "ID del equipo."
+        tests:
+          - not_null
+      - name: player_id
+        description: "ID del jugador."
+        tests:
+          - not_null
+      - name: min
+        description: "Minutos jugados por el jugador."
+      - name: fg_pct
+        description: "Porcentaje de tiros de campo del jugador."
+      - name: blk
+        description: "Bloqueos realizados por el jugador."
+      - name: dreb
+        description: "Rebotes defensivos del jugador."
+      - name: ast
+        description: "Asistencias del jugador."
+      - name: pts
+        description: "Puntos anotados por el jugador."
+      - name: reb
+        description: "Rebotes totales del jugador."
+      - name: oreb
+        description: "Rebotes ofensivos del jugador."
+      - name: pf
+        description: "Faltas personales del jugador."
+      - name: stl
+        description: "Robos realizados por el jugador."
+      - name: fg3a
+        description: "Intentos de tiros de tres puntos del jugador."
+      - name: fta
+        description: "Intentos de tiros libres del jugador."
+      - name: comment
+        description: "Comentarios adicionales sobre el desempeño del jugador."
+      - name: tos
+        description: "Pérdidas de balón del jugador."
+      - name: team_abbreviation
+        description: "Abreviatura del equipo."
+      - name: fga
+        description: "Intentos de tiros de campo del jugador."
+      - name: fg3m
+        description: "Tiros de tres puntos anotados por el jugador."
+      - name: plus_minus
+        description: "Indicador del impacto del jugador en el marcador."
+      - name: fg3_pct
+        description: "Porcentaje de tiros de tres puntos del jugador."
+      - name: ft_pct
+        description: "Porcentaje de tiros libres del jugador."
+
+  - name: stg_fivetran_nba_games_data__players
+    description: "Este modelo contiene datos de los jugadores de la NBA."
+    columns:
+      - name: player_team_season_id
+        description: "id unico surrogado"
+        tests:
+          - not_null
+      - name: team_id
+        description: "ID del equipo al que pertenece el jugador."
+        tests:
+          - not_null
+      - name: season
+        description: "Temporada en la que el jugador participa."
+        tests:
+          - not_null
+      - name: player_name
+        description: "Nombre completo del jugador."
+        tests:
+          - not_null
+      - name: player_id
+        description: "ID único del jugador."
+        tests:
+          - not_null
+
+  - name: stg_fivetran_nba_games_data__teams
+    description: "Este modelo contiene datos de los equipos de la NBA."
+    columns:
+      - name: team_id
+        description: "ID único del equipo."
+        tests:
+          - not_null
+          - unique
+      - name: generalmanager
+        description: "Nombre del gerente general del equipo."
+      - name: owner
+        description: "Propietario del equipo."
+      - name: city
+        description: "Ciudad donde se encuentra el equipo."
+        tests:
+          - not_null
+      - name: arenacapacity
+        description: "Capacidad del estadio del equipo."
+      - name: yearfounded
+        description: "Año en que se fundó el equipo."
+      - name: arena
+        description: "Nombre del estadio del equipo."
+      - name: headcoach
+        description: "Nombre del entrenador principal del equipo."
+      - name: team_name
+        description: "Nombre del equipo."
+        tests:
+          - not_null
+      - name: dleagueaffiliation
+        description: "Afiliación del equipo con la D-League."
+      - name: abbreviation
+        description: "Abreviatura del equipo."

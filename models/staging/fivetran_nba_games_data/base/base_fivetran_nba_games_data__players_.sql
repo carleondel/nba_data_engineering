@@ -24,8 +24,8 @@ transformed AS (
         SEASON,
         PLAYER_NAME,
         player_id,
-        _FIVETRAN_DELETED,
-        _FIVETRAN_SYNCED
+        --_FIVETRAN_DELETED,
+        --_FIVETRAN_SYNCED
     FROM deduplicated
 )
 

@@ -23,9 +23,9 @@ renamed as (
         headcoach,
         nickname AS team_name,
         dleagueaffiliation,
-        abbreviation,
-        _fivetran_deleted,
-        _fivetran_synced
+        abbreviation
+        --_fivetran_deleted,
+        --_fivetran_synced
 
     from source
 
