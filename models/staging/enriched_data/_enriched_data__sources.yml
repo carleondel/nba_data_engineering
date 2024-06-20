@@ -1,8 +1,7 @@
 version: 2
 
 sources:
-
-  - name: other_sources # name of the source 
+  - name: other_sources # name of the source
     schema: other_sources # this is the schema our raw data lives in
     database: ALUMNO28_NBA_BRONZE_DB # this is the name of our database
 
@@ -11,44 +10,64 @@ sources:
       schema: false
       identifier: false
 
-    freshness:
-      warn_after: {count: 24, period: hour}
-      error_after: {count: 48, period: hour}
-
     tables:
-
       - name: players_static_info
         columns:
           - name: person_id
+            description: "Unique identifier for the person."
+            tests:
+              - not_null
+              - unique
           - name: first_name
+            description: "First name of the person."
+
           - name: last_name
+            description: "Last name of the person."
+            tests:
+              - not_null
+
           - name: display_first_last
+            description: "Display name combining first and last names."
+
           - name: display_fi_last
+            description: "Shortened display name combining first initial and last name."
+
           - name: birthdate
+            description: "Date of birth of the person."
+            tests:
+              - not_null
+
           - name: school
           - name: country
           - name: last_affiliation
           - name: height
           - name: weight
           - name: season_exp
+            description: "Number of seasons of experience in the league."
           - name: jersey
           - name: position
           - name: rosterstatus
           - name: games_played_current_season_flag
           - name: team_id
+            description: "Identifier of the team associated with the person."
+            tests:
+              - not_null
           - name: team_name
           - name: team_abbreviation
           - name: team_code
           - name: team_city
           - name: playercode
           - name: from_year
+            description: "Year the player started playing"
           - name: to_year
+            description: "Last year in the league."
           - name: games_played_flag
           - name: draft_year
           - name: draft_round
           - name: draft_number
           - name: greatest_75_flag
-        
+            description: "Flag indicating if the person is part of the greatest 75 players."
+
       - name: conference_teams
         columns:
           - name: team_id
