@@ -56,4 +56,5 @@ renamed as (
 select * 
 from renamed
 where row_num = 1   -- Nos quedamos solo con la primera fila de cada surrogate_key
--- (había 7 duplicados que eran errores de inserción en la BBDD)
+-- (había 7 duplicados de player_id que eran errores de inserción en la BBDD)
+-- tambien nos quitamos con esto los duplicados de game_id

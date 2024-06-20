@@ -73,51 +73,143 @@ sources:
       - name: games_details
         columns:
           - name: _FIVETRAN_ID
+            description: "Unique identifier assigned by Fivetran."
+            tests:
+              - not_null
+              - unique
           - name: TEAM_ID
+            description: "ID of the team."
+            tests:
+              - not_null
           - name: FTM
+            description: "Free throws made by the player."
+
           - name: FGM
+            description: "Field goals made by the player."
+
           - name: MIN
+            description: "Minutes played by the player."
+
           - name: FG_PCT
+            description: "Field goal percentage of the player."
+
           - name: BLK
+            description: "Blocks by the player."
+
           - name: PLAYER_ID
+            description: "ID of the player."
+
           - name: START_POSITION
+            description: "Starting position of the player in the game."
+
           - name: DREB
+            description: "Defensive rebounds by the player."
+
           - name: AST
+            description: "Assists by the player."
+
           - name: PTS
+            description: "Points scored by the player."
+
           - name: REB
+            description: "Total rebounds by the player."
+
           - name: NICKNAME
+            description: "Nickname of the player."
+
           - name: OREB
+            description: "Offensive rebounds by the player."
+
           - name: PF
+            description: "Personal fouls committed by the player."
+
           - name: STL
+            description: "Steals by the player."
+
           - name: FG3A
+            description: "Three-point attempts by the player."
+
           - name: FTA
+            description: "Free throw attempts by the player."
+
           - name: COMMENT
+            description: "Comment associated with the player's performance."
+
           - name: PLAYER_NAME
+            description: "Name of the player."
+
           - name: TOS
+            description: "Turnovers committed by the player."
+
           - name: TEAM_ABBREVIATION
+            description: "Abbreviation of the team."
+
           - name: FGA
+            description: "Field goal attempts by the player."
+
           - name: TEAM_CITY
+            description: "City of the team."
+
           - name: FG3M
+            description: "Three-pointers made by the player."
+
           - name: GAME_ID
+            description: "ID of the game."
+            tests:
+              - not_null
+              - unique
+
           - name: PLUS_MINUS
+            description: "Plus-minus statistic of the player."
+
           - name: FG3_PCT
+            description: "Three-point percentage of the player."
+
           - name: FT_PCT
+            description: "Free throw percentage of the player."
+
           - name: _FIVETRAN_DELETED
+            description: "Flag indicating if the record has been deleted by Fivetran."
+
           - name: _FIVETRAN_SYNCED
+            description: "Timestamp indicating when the record was synced by Fivetran."
 
       - name: players
-        loaded_at_field: _fivetran_synced
         columns:
           - name: _FIVETRAN_ID
+            description: "Unique identifier assigned by Fivetran."
+            tests:
+              - not_null
+              - unique
           - name: TEAM_ID
+            description: "ID of the team the player is associated with."
+            tests:
+              - not_null
+
           - name: SEASON
+            description: "Season during which the player's data is recorded."
+            tests:
+              - not_null
+
           - name: PLAYER_NAME
+            description: "Name of the player."
+            tests:
+              - not_null
+              - unique
+
           - name: PLAYER_ID
+            description: "Unique identifier for the player."
+            tests:
+              - not_null
+              - unique
+
           - name: _FIVETRAN_DELETED
+            description: "Flag indicating if the record has been deleted by Fivetran."
+
           - name: _FIVETRAN_SYNCED
+            description: "Timestamp indicating when the record was synced by Fivetran."
 
       - name: ranking
-        loaded_at_field: _fivetran_synced
         columns:
           - name: _FIVETRAN_ID
           - name: L
@@ -137,22 +229,57 @@ sources:
           - name: _FIVETRAN_SYNCED
 
       - name: teams
-        loaded_at_field: _fivetran_synced
         columns:
           - name: _FIVETRAN_ID
+            description: "Unique identifier assigned by Fivetran."
+
           - name: MAX_YEAR
+            description: "Maximum year the team was active."
+
           - name: GENERALMANAGER
+            description: "General manager of the team."
+
           - name: OWNER
+            description: "Owner of the team."
+
           - name: CITY
+            description: "City where the team is based."
+
           - name: ARENACAPACITY
+            description: "Capacity of the team's arena."
+
           - name: YEARFOUNDED
+            description: "Year when the team was founded."
+
           - name: ARENA
+            description: "Name of the team's arena."
+
           - name: TEAM_ID
+            description: "Unique identifier for the team."
+            tests:
+              - not_null
+              - unique
+
           - name: LEAGUE_ID
+            description: "Identifier for the league to which the team belongs."
+
           - name: MIN_YEAR
+            description: "Minimum year relevant to the team's data."
+
           - name: HEADCOACH
+            description: "Head coach of the team."
+
           - name: NICKNAME
+            description: "Nickname of the team."
+
           - name: DLEAGUEAFFILIATION
+            description: "Affiliation with the D-League."
+
           - name: ABBREVIATION
+            description: "Abbreviation used to represent the team."
+
           - name: _FIVETRAN_DELETED
+            description: "Flag indicating if the record has been deleted by Fivetran."
+
           - name: _FIVETRAN_SYNCED
+            description: "Timestamp indicating when the record was synced by Fivetran."
