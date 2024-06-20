@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: int_players_static_info__filtered
+    description: "Este modelo filtra la información estática de los jugadores, manteniendo solo los jugadores presentes en la fuente original NBA_GAMES_DATA."
+    columns:
+      - name: player_id
+        description: "ID único del jugador."
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_fivetran_nba_games_data__players')
+              field: player_id
+      - name: player_name
+        description: "Nombre completo del jugador."
+        tests:
+          - not_null
+      - name: birthdate
+        description: "Fecha de nacimiento del jugador."
+        tests:
+          - not_null
+      - name: school
+        description: "Escuela o universidad de la que proviene el jugador."
+      - name: country
+        description: "País de origen del jugador."
+      - name: last_affiliation
+        description: "Última afiliación del jugador."
+      - name: height_cm
+        description: "Altura del jugador en centímetros."
+      - name: weight_kg
+        description: "Peso del jugador en kilogramos."
+      - name: season_exp
+        description: "Años de experiencia del jugador en la temporada."
+      - name: jersey
+        description: "Número de camiseta del jugador."
+      - name: from_year
+        description: "Año en que el jugador comenzó a jugar."
+        tests:
+          - not_null
+      - name: to_year
+        description: "Año en que el jugador dejó de jugar."
+        tests:
+          - not_null
+      - name: draft_year
+        description: "Año en que el jugador fue seleccionado en el draft."
+      - name: draft_round
+        description: "Ronda en que el jugador fue seleccionado en el draft."
+      - name: draft_number
+        description: "Número en que el jugador fue seleccionado en el draft."
+      - name: greatest_75_flag
+        description: "Indica si el jugador está entre los 75 mejores jugadores."

@@ -1,3 +1,6 @@
+--- CON EL INNER JOIN ME ESTOY QUEDANDO SOLO CON LOS PLAYER_ID DE MI FUENTE ORIGINAL NBA_GAMES_DATA
+--- PARA CONSTRUIR LA DIM_PLAYERS (INFO ESTATICA)
+
 WITH stg_fivetran_nba_games_players AS (
     SELECT DISTINCT player_id
     FROM {{ ref('stg_fivetran_nba_games_data__players') }}
