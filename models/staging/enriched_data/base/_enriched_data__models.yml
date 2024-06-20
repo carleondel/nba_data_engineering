@@ -7,8 +7,52 @@ models:
       - name: player_id
         description: "Surrogate key created based on player_name"
         tests:
+          - not_null
           - unique
       - name: player_name
         description: "The name of the player"
         tests:
-          - unique
+          - not_null
+      - name: birthdate
+        description: "Date of birth of the player."
+        tests:
+          - not_null
+
+      - name: school
+        description: "Name of the school attended by the player."
+
+      - name: country
+        description: "Country of origin of the player."
+
+      - name: last_affiliation
+        description: "Last affiliation of the player."
+
+      - name: height
+        description: "Height of the player."
+
+      - name: weight
+        description: "Weight of the player."
+
+      - name: season_exp
+        description: "Number of seasons of experience in the league."
+
+      - name: jersey
+        description: "Jersey number worn by the player."
+
+      - name: from_year
+        description: "Starting year relevant to the player's data."
+
+      - name: to_year
+        description: "Ending year relevant to the player's data."
+
+      - name: draft_year
+        description: "Year in which the player was drafted."
+
+      - name: draft_round
+        description: "Round in which the player was drafted."
+
+      - name: draft_number
+        description: "Draft number of the player."
+
+      - name: greatest_75_flag
+        description: "Flag indicating if the player is part of the greatest 75 players."

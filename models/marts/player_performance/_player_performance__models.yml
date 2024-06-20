@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: top_performances_playoff
+    description: "Este modelo identifica las 10 mejores actuaciones de jugadores en los playoffs entre 2009 y 2019, clasificadas por Player Efficiency Rating (PER)."
+    columns:
+      - name: player_name
+        description: "Nombre del jugador."
+      - name: team_name
+        description: "Nombre del equipo del jugador."
+      - name: game_date
+        description: "Fecha del partido."
+      - name: season
+        description: "Temporada en la que se jugó el partido."
+      - name: per
+        description: "Player Efficiency Rating del jugador en ese partido."
+      - name: pts
+        description: "Puntos anotados por el jugador en ese partido."
+      - name: ast
+        description: "Asistencias realizadas por el jugador en ese partido."
+      - name: reb
+        description: "Rebotes capturados por el jugador en ese partido."
+      - name: min
+        description: "Minutos jugados por el jugador en ese partido."
+      - name: plus_minus
+        description: "Valor más/menos del jugador en ese partido."
+
+  - name: top_performances_regular_season
+    description: "Este modelo identifica las 10 mejores actuaciones de jugadores en la temporada regular entre 2009 y 2019, clasificadas por Player Efficiency Rating (PER)."
+    columns:
+      - name: player_name
+        description: "Nombre del jugador."
+      - name: team_name
+        description: "Nombre del equipo del jugador."
+      - name: game_date
+        description: "Fecha del partido."
+      - name: season
+        description: "Temporada en la que se jugó el partido."
+      - name: per
+        description: "Player Efficiency Rating del jugador en ese partido."
+      - name: pts
+        description: "Puntos anotados por el jugador en ese partido."
+      - name: ast
+        description: "Asistencias realizadas por el jugador en ese partido."
+      - name: reb
+        description: "Rebotes capturados por el jugador en ese partido."
+      - name: min
+        description: "Minutos jugados por el jugador en ese partido."
+      - name: plus_minus
+        description: "Valor más/menos del jugador en ese partido."
+
+  - name: top_players_per_season
+    description: "Este modelo identifica a los 5 mejores jugadores por Player Efficiency Rating (PER) por temporada entre 2009 y 2019."
+    columns:
+      - name: player_id
+        description: "ID del jugador."
+      - name: player_name
+        description: "Nombre del jugador."
+      - name: team_name
+        description: "Nombre del equipo del jugador."
+      - name: season
+        description: "Temporada."
+      - name: avg_per
+        description: "Player Efficiency Rating promedio del jugador en la temporada."
+      - name: avg_pts
+        description: "Promedio de puntos anotados por el jugador en la temporada."
+      - name: avg_ast
+        description: "Promedio de asistencias realizadas por el jugador en la temporada."
+      - name: avg_reb
+        description: "Promedio de rebotes capturados por el jugador en la temporada."
+      - name: avg_min
+        description: "Promedio de minutos jugados por el jugador en la temporada."

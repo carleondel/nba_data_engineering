@@ -8,7 +8,7 @@ WITH stg_teams AS (
 transformations AS (
     SELECT
         team_id,
-        nickname,
+        team_name,
         abbreviation,
         headcoach,
         generalmanager,

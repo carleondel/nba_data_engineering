@@ -1,0 +1,316 @@
+version: 2
+
+models:
+  - name: dim_conference
+    description: "Dimensión que contiene la información de las conferencias a las que pertenecen los equipos."
+    columns:
+      - name: team_id
+        description: "ID único del equipo."
+        tests:
+          - not_null
+          - unique
+      - name: conference
+        description: "Conferencia a la que pertenece el equipo."
+
+  - name: dim_date
+    description: "Dimensión de fechas generada desde 2008-01-01 hasta 2021-12-31."
+    columns:
+      - name: DATE_DAY
+        description: "Día específico de la fecha."
+      - name: PRIOR_DATE_DAY
+        description: "Día anterior a la fecha."
+      - name: NEXT_DATE_DAY
+        description: "Día siguiente a la fecha."
+      - name: PRIOR_YEAR_DATE_DAY
+        description: "Día del año anterior a la fecha."
+      - name: PRIOR_YEAR_OVER_YEAR_DATE_DAY
+        description: "Día del año anterior al mismo día del año previo."
+      - name: DAY_OF_WEEK
+        description: "Número del día de la semana (1=Domingo, 7=Sábado)."
+      - name: DAY_OF_WEEK_ISO
+        description: "Número del día de la semana ISO (1=Lunes, 7=Domingo)."
+      - name: DAY_OF_WEEK_NAME
+        description: "Nombre completo del día de la semana."
+      - name: DAY_OF_WEEK_NAME_SHORT
+        description: "Nombre corto del día de la semana."
+      - name: DAY_OF_MONTH
+        description: "Número del día del mes."
+      - name: DAY_OF_YEAR
+        description: "Número del día del año."
+      - name: WEEK_START_DATE
+        description: "Fecha de inicio de la semana."
+      - name: WEEK_END_DATE
+        description: "Fecha de finalización de la semana."
+      - name: PRIOR_YEAR_WEEK_START_DATE
+        description: "Fecha de inicio de la misma semana en el año anterior."
+      - name: PRIOR_YEAR_WEEK_END_DATE
+        description: "Fecha de finalización de la misma semana en el año anterior."
+      - name: WEEK_OF_YEAR
+        description: "Número de la semana del año."
+      - name: ISO_WEEK_START_DATE
+        description: "Fecha de inicio de la semana ISO."
+      - name: ISO_WEEK_END_DATE
+        description: "Fecha de finalización de la semana ISO."
+      - name: PRIOR_YEAR_ISO_WEEK_START_DATE
+        description: "Fecha de inicio de la misma semana ISO en el año anterior."
+      - name: PRIOR_YEAR_ISO_WEEK_END_DATE
+        description: "Fecha de finalización de la misma semana ISO en el año anterior."
+      - name: ISO_WEEK_OF_YEAR
+        description: "Número de la semana ISO del año."
+      - name: PRIOR_YEAR_WEEK_OF_YEAR
+        description: "Número de la misma semana en el año anterior."
+      - name: PRIOR_YEAR_ISO_WEEK_OF_YEAR
+        description: "Número de la misma semana ISO en el año anterior."
+      - name: MONTH_OF_YEAR
+        description: "Número del mes del año."
+      - name: MONTH_NAME
+        description: "Nombre completo del mes."
+      - name: MONTH_NAME_SHORT
+        description: "Nombre corto del mes."
+      - name: MONTH_START_DATE
+        description: "Fecha de inicio del mes."
+      - name: MONTH_END_DATE
+        description: "Fecha de finalización del mes."
+      - name: PRIOR_YEAR_MONTH_START_DATE
+        description: "Fecha de inicio del mismo mes en el año anterior."
+      - name: PRIOR_YEAR_MONTH_END_DATE
+        description: "Fecha de finalización del mismo mes en el año anterior."
+      - name: QUARTER_OF_YEAR
+        description: "Número del trimestre del año."
+      - name: QUARTER_START_DATE
+        description: "Fecha de inicio del trimestre."
+      - name: QUARTER_END_DATE
+        description: "Fecha de finalización del trimestre."
+      - name: YEAR_NUMBER
+        description: "Número del año."
+      - name: YEAR_START_DATE
+        description: "Fecha de inicio del año."
+      - name: YEAR_END_DATE
+        description: "Fecha de finalización del año."
+
+  - name: dim_players
+    description: "Dimensión que contiene la información estática de los jugadores."
+    columns:
+      - name: player_id
+        description: "ID único del jugador."
+        tests:
+          - not_null
+          - unique
+      - name: player_name
+        description: "Nombre completo del jugador."
+        tests:
+          - not_null
+      - name: birthdate
+        description: "Fecha de nacimiento del jugador."
+        tests:
+          - not_null
+      - name: school
+        description: "Escuela o universidad de la que proviene el jugador."
+      - name: country
+        description: "País de origen del jugador."
+        tests:
+          - not_null
+      - name: last_affiliation
+        description: "Última afiliación del jugador."
+      - name: height_cm
+        description: "Altura del jugador en centímetros."
+      - name: weight_kg
+        description: "Peso del jugador en kilogramos."
+      - name: season_exp
+        description: "Años de experiencia del jugador en la temporada."
+      - name: jersey
+        description: "Número de camiseta del jugador."
+      - name: from_year
+        description: "Año en que el jugador comenzó a jugar."
+        tests:
+          - not_null
+      - name: to_year
+        description: "Año en que el jugador dejó de jugar."
+        tests:
+          - not_null
+      - name: draft_year
+        description: "Año en que el jugador fue seleccionado en el draft."
+      - name: draft_round
+        description: "Ronda en que el jugador fue seleccionado en el draft."
+      - name: draft_number
+        description: "Número en que el jugador fue seleccionado en el draft."
+      - name: greatest_75_flag
+        description: "Indica si el jugador está entre los 75 mejores jugadores."
+        tests:
+          - accepted_values:
+              values: ["TRUE", "FALSE"]
+
+  - name: dim_teams
+    description: "Dimensión que contiene la información de los equipos."
+    columns:
+      - name: team_id
+        description: "ID único del equipo."
+        tests:
+          - not_null
+          - unique
+      - name: team_name
+        description: "Nombre del equipo."
+        tests:
+          - not_null
+      - name: abbreviation
+        description: "Abreviatura del nombre del equipo."
+      - name: headcoach
+        description: "Entrenador principal del equipo."
+      - name: generalmanager
+        description: "Gerente general del equipo."
+      - name: owner
+        description: "Propietario del equipo."
+      - name: city
+        description: "Ciudad donde se encuentra el equipo."
+      - name: arenacapacity
+        description: "Capacidad del estadio del equipo."
+      - name: yearfounded
+        description: "Año de fundación del equipo."
+      - name: arena
+        description: "Nombre del estadio del equipo."
+      - name: dleagueaffiliation
+        description: "Afiliación a la D-League del equipo."
+
+  - name: fct_games
+    description: "Hechos de los juegos con las estadísticas y resultados."
+    columns:
+      - name: game_id
+        description: "ID único del juego."
+        tests:
+          - not_null
+          - unique
+      - name: game_date
+        description: "Fecha del juego."
+        tests:
+          - not_null
+      - name: season
+        description: "Temporada a la que pertenece el juego."
+      - name: team_id_home
+        description: "ID del equipo local."
+        tests:
+          - not_null
+      - name: team_id_away
+        description: "ID del equipo visitante."
+        tests:
+          - not_null
+      - name: ft_pct_home
+        description: "Porcentaje de tiros libres del equipo local."
+      - name: ft_pct_away
+        description: "Porcentaje de tiros libres del equipo visitante."
+      - name: fg_pct_home
+        description: "Porcentaje de tiros de campo del equipo local."
+      - name: fg_pct_away
+        description: "Porcentaje de tiros de campo del equipo visitante."
+      - name: fg3_pct_home
+        description: "Porcentaje de tiros de tres puntos del equipo local."
+      - name: fg3_pct_away
+        description: "Porcentaje de tiros de tres puntos del equipo visitante."
+      - name: ast_home
+        description: "Asistencias del equipo local."
+      - name: ast_away
+        description: "Asistencias del equipo visitante."
+      - name: reb_home
+        description: "Rebotes del equipo local."
+      - name: reb_away
+        description: "Rebotes del equipo visitante."
+      - name: pts_home
+        description: "Puntos anotados por el equipo local."
+      - name: pts_away
+        description: "Puntos anotados por el equipo visitante."
+      - name: home_team_wins
+        description: "Indica si el equipo local ganó el juego."
+        tests:
+          - accepted_values:
+              values: [0, 1]
+      - name: game_type
+        description: "Tipo de juego (e.g., regular season, playoffs)."
+        tests:
+          - not_null
+
+  - name: fct_games_details
+    description: "Detalles de los juegos con las estadísticas de los jugadores."
+    columns:
+      - name: id
+        description: "ID único del detalle del juego."
+        tests:
+          - not_null
+          - unique
+      - name: player_id
+        description: "ID único del jugador."
+        tests:
+          - not_null
+      - name: game_id
+        description: "ID único del juego."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('fct_games')
+              field: game_id
+      - name: team_id
+        description: "ID del equipo al que pertenece el jugador."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_teams')
+              field: team_id
+      - name: min
+        description: "Minutos jugados por el jugador."
+      - name: pts
+        description: "Puntos anotados por el jugador."
+      - name: reb
+        description: "Rebotes del jugador."
+      - name: ast
+        description: "Asistencias del jugador."
+      - name: stl
+        description: "Robos del jugador."
+      - name: blk
+        description: "Bloqueos del jugador."
+      - name: fgm
+        description: "Tiros de campo anotados por el jugador."
+      - name: fga
+        description: "Tiros de campo intentados por el jugador."
+      - name: fg_pct
+        description: "Porcentaje de tiros de campo del jugador."
+      - name: fg3m
+        description: "Tiros de tres puntos anotados por el jugador."
+      - name: fg3a
+        description: "Tiros de tres puntos intentados por el jugador."
+      - name: fg3_pct
+        description: "Porcentaje de tiros de tres puntos del jugador."
+      - name: ftm
+        description: "Tiros libres anotados por el jugador."
+      - name: fta
+        description: "Tiros libres intentados por el jugador."
+      - name: ft_pct
+        description: "Porcentaje de tiros libres del jugador."
+      - name: oreb
+        description: "Rebotes ofensivos del jugador."
+      - name: dreb
+        description: "Rebotes defensivos del jugador."
+      - name: tos
+        description: "Pérdidas de balón del jugador."
+      - name: pf
+        description: "Faltas personales del jugador."
+      - name: plus_minus
+        description: "Estadística de plus/minus del jugador."
+      - name: start_position
+        description: "Posición inicial del jugador."
+      - name: comment
+        description: "Comentarios adicionales."
+      - name: player_efficiency_rating
+        description: "Rating de eficiencia del jugador."
+
+  - name: player_season_team
+    description: "Relación entre el jugador, la temporada y el equipo."
+    columns:
+      - name: player_team_season_id
+        description: "ID único de la relación jugador-temporada-equipo."
+        tests:
+          - not_null
+          - unique
+      - name: team_id
+        description: "ID único de equipo"
+      - name: season
+        description: "Temporada"
+      - name: player_id
+        description: "ID único de jugador"

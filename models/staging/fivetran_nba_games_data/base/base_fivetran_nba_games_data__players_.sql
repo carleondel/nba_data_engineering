@@ -6,22 +6,28 @@ source as (
 
 ),
 
-transformed as (
-
-    select
-         -- Generating surrogate key
-        {{ dbt_utils.generate_surrogate_key(['player_id', 'team_ID', 'season']) }} AS player_team_season_id,
-        --_fivetran_id,
-        team_id,
-        season,
-        player_name,
-         -- Generating surrogate key in order for it to have the same format as players_static_info
+deduplicated AS (
+    SELECT DISTINCT
         {{ dbt_utils.generate_surrogate_key(['player_name']) }} AS player_id,
-        _fivetran_deleted,
-        _fivetran_synced
+        TEAM_ID,
+        SEASON,
+        PLAYER_NAME,
+        _FIVETRAN_DELETED,
+        _FIVETRAN_SYNCED
+    FROM source
+),
 
-    from source
-
+transformed AS (
+    SELECT
+        {{ dbt_utils.generate_surrogate_key(['player_id', 'TEAM_ID', 'SEASON']) }} AS player_team_season_id,
+        TEAM_ID,
+        SEASON,
+        PLAYER_NAME,
+        player_id,
+        --_FIVETRAN_DELETED,
+        --_FIVETRAN_SYNCED
+    FROM deduplicated
 )
 
-select * from transformed
+SELECT * 
+FROM transformed

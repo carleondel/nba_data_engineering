@@ -1,3 +1,4 @@
+-- we add the game_category & remove some columns
 
 WITH base_games AS (
     SELECT * 
@@ -6,8 +7,27 @@ WITH base_games AS (
 
 transformation AS (
     SELECT
-          *,
-          {{ categorize_game_type('game_date') }} AS game_type
+          game_id
+        , game_date
+        , season
+        , team_id_home
+        , team_id_away
+        , ft_pct_home
+        , ft_pct_away
+        , fg_pct_home
+        , fg_pct_away
+        , fg3_pct_home
+        , fg3_pct_away
+        , ast_home
+        , ast_away
+        , reb_home
+        , reb_away
+        , pts_home
+        , pts_away
+        , home_team_wins
+        --, _fivetran_deleted
+        --, date_load,
+          ,{{ categorize_game_type('game_date') }} AS game_type
     FROM base_games
     )
 
