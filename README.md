@@ -98,7 +98,7 @@ En esta capa, el modelo toma su forma final. De las capas Stages e Intermediate 
 
 ![DAG sin marts](https://github.com/carleondel/nba_data_engineering/assets/140411658/2da71348-dca5-4259-8831-937e23d98f20)
 
-#### Modelo Entidad Relación Final
+#### Modelo Dimensional Final
 
 ![Modelo E-R final](https://github.com/carleondel/nba_data_engineering/assets/140411658/1df68c84-f570-4612-8275-e3976ba9b0c6)
 
