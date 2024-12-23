@@ -1,13 +1,27 @@
 # NBA Data Engineering
-Proyecto final del Curso de Data Egineering 2024 - Cívica
+Proyecto final del Curso de Data Engineering 2024 - Cívica
 
 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/National_Basketball_Association_logo.svg/1200px-National_Basketball_Association_logo.svg.png" alt="NBA Logo" width="50"/>
 
 
 
 ## Introducción
-Este proyecto de Data Engineering está enfocado en la gestión y análisis de datos de la NBA, utilizando Snowflake y dbt (Data Build Tool). A través de diferentes capas de procesamiento (Bronze, Silver y Gold), hemos transformado y optimizado los datos para su análisis y presentación final.
+Este proyecto de Data Engineering se centra en la gestión y análisis de datos de la NBA utilizando Snowflake y dbt (Data Build Tool). Se sigue la arquitectura **Medallion** (Bronze, Silver, Gold) para procesar, transformar y optimizar los datos, desde su ingesta hasta su presentación en Power BI.
 
+
+
+## Arquitectura de la solución
+
+El flujo de datos sigue estas etapas:
+
+1. **Capa Bronze (Raw)**: Almacena los datos originales tras la ingesta. 
+2. **Transformaciones con dbt**: dbt opera en dos etapas principales:  
+   - Entre **Bronze y Silver**: Limpieza y preparación inicial.  
+   - Entre **Silver y Gold**: Optimización y modelado avanzado.  
+3. **Capa Enriched (Silver & Gold)**: Datos transformados y organizados en Snowflake. 
+4. **Reporting**: Presentación de los datos en dashboards interactivos con Power BI.
+
+![NBA_Architecture](https://github.com/user-attachments/assets/8f15e21a-7d48-48f5-be12-49abaec5928a)
 
 
 ## Capa Bronze 
@@ -93,7 +107,7 @@ En esta capa, algunos de los *stages* se combinan para formar la tabla de hechos
 ### Core y marts
 
 
-En esta capa, el modelo toma su forma final. De las capas Stages e Intermediate surgen las dimensiones del modelo y las tablas de hechos finales. En el directorio /core de la capa Gold, se encuentran las dimensiones de uso común. Entre ellas, la de tiempo, generada mediante el paquete *dbt_date*.
+En esta capa, el modelo toma su forma final. De las capas Stages e Intermediate surgen las dimensiones del modelo y las tablas de hechos finales. En el directorio **/core** de la capa Gold, se encuentran las dimensiones de uso común. Entre ellas, la de tiempo, generada mediante el paquete `dbt_date`.
  
 
 ![DAG sin marts](https://github.com/carleondel/nba_data_engineering/assets/140411658/2da71348-dca5-4259-8831-937e23d98f20)
