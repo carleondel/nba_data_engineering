@@ -1,6 +1,7 @@
 # NBA Data Pipeline
 
-## Final Project - Data Engineering (Civica Software)
+**Portfolio Project - Data Engineering (Civica Software)**  
+This project showcases my expertise in building an ELT pipeline for NBA data using modern data engineering tools like Snowflake, dbt, and Power BI. It demonstrates my ability to design scalable data architectures, implement transformations, and create impactful visualizations.
 
 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/National_Basketball_Association_logo.svg/1200px-National_Basketball_Association_logo.svg.png" alt="NBA Logo" width="50"/>
 
@@ -84,7 +85,7 @@ This project builds an **ELT pipeline** for NBA data using **Snowflake** and **d
 
 ### Documentation
 
-Field descriptions in (.yml) files for clarity and maintainability.
+- Field descriptions in `.yml` files for clarity and maintainability.
 
 ## Visualizations
 
